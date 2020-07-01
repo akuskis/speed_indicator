@@ -1,2 +1,2 @@
 include ':android'
-rootProject.name = "Throttle"
+rootProject.name = "Speed Indicator"

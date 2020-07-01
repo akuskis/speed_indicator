@@ -1,4 +1,4 @@
-package com.example.throttle;
+package com.example.speed_indicator;
 
 import org.junit.Test;
 

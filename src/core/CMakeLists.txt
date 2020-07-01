@@ -1,4 +1,4 @@
-project(throttle_core)
+project(speed_indicator_core)
 
 #
 # flags

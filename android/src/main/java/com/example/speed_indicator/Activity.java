@@ -1,4 +1,4 @@
-package com.example.throttle;
+package com.example.speed_indicator;
 
 import org.libsdl.app.SDLActivity;
 
@@ -8,7 +8,7 @@ public class Activity extends SDLActivity {
         return new String[]{
                 "hidapi",
                 "SDL2",
-                "throttle_core"
+                "speed_indicator_core"
         };
     }
 }

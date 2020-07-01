@@ -1,1 +1,1 @@
-project(throttle_core_tests)
+project(speed_indicator_tests)

@@ -4,7 +4,7 @@
 
 namespace
 {
-char const* const APPNAME = "Throttle_SDL";
+char const* const APPNAME = "SpeedIndicator_SDL";
 } // namespace
 
 
@@ -16,7 +16,7 @@ int SDL_main(int /* argc */, char** /* argv */)
         return EXIT_FAILURE;
     }
 
-    SDL_Window* window = SDL_CreateWindow("Hello World!", 0, 0, 640, 480, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
+    SDL_Window* window = SDL_CreateWindow("Speed Indicator", 0, 0, 640, 480, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
     if (window == nullptr)
     {
         __android_log_print(ANDROID_LOG_ERROR, APPNAME, "SDL_CreateWindow: %s\n", SDL_GetError());
