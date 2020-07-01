@@ -12,6 +12,7 @@ set(SOURCES
         main.cpp
         Configuration.cpp
         engine/Engine.cpp
+        engine/Fps.cpp
         )
 
 include_directories(.)

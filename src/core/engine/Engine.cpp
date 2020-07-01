@@ -1,6 +1,7 @@
 #include "Engine.hpp"
 
 #include "Configuration.hpp"
+#include "Fps.hpp"
 #include "misc/ObjectRaii.hpp"
 
 #include <string>
@@ -54,9 +55,12 @@ Engine::~Engine() = default;
 
 void Engine::runLoop()
 {
+    Fps fps(impl->cfg.getFrameRate());
+
     while (impl->running)
     {
         render();
+        fps.next();
     }
 }
 
