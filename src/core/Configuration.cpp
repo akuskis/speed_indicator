@@ -1,0 +1,30 @@
+#include "Configuration.hpp"
+
+
+namespace
+{
+uint32_t const DEFAULT_FRAME_RATE = 30;
+
+int const DEFAULT_SCREEN_WIDTH = 640;
+int const DEFAULT_SCREEN_HEIGHT = 480;
+} // namespace
+
+
+namespace s_indicator
+{
+uint32_t Configuration::getFrameRate() const
+{
+    return DEFAULT_FRAME_RATE;
+}
+
+int Configuration::getScreenWidth() const
+{
+    return DEFAULT_SCREEN_WIDTH;
+}
+
+int Configuration::getScreenHeight() const
+{
+    return DEFAULT_SCREEN_HEIGHT;
+}
+
+} // namespace s_indicator

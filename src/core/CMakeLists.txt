@@ -10,7 +10,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Werror")
 #
 set(SOURCES
         main.cpp
+        Configuration.cpp
+        engine/Engine.cpp
         )
+
+include_directories(.)
 
 #
 # build
