@@ -1,37 +1,34 @@
+#include "Logger.hpp"
+
 #include <SDL.h>
-#include <android/log.h>
-
-
-namespace
-{
-char const* const APPNAME = "SpeedIndicator_SDL";
-} // namespace
 
 
 int SDL_main(int /* argc */, char** /* argv */)
 {
+    using namespace s_indicator::core;
+
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
     {
-        __android_log_print(ANDROID_LOG_VERBOSE, APPNAME, "SDL_Init: %s\n", SDL_GetError());
+        Logger::error("SDL_Init: %s\n", SDL_GetError());
         return EXIT_FAILURE;
     }
 
     SDL_Window* window = SDL_CreateWindow("Speed Indicator", 0, 0, 640, 480, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
     if (window == nullptr)
     {
-        __android_log_print(ANDROID_LOG_ERROR, APPNAME, "SDL_CreateWindow: %s\n", SDL_GetError());
+        Logger::error("SDL_CreateWindow: %s\n", SDL_GetError());
         return EXIT_FAILURE;
     }
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == nullptr)
     {
-        __android_log_print(ANDROID_LOG_ERROR, APPNAME, "SDL_CreateRenderer: %s\n", SDL_GetError());
+        Logger::error("SDL_CreateRenderer: %s\n", SDL_GetError());
         SDL_DestroyWindow(window);
         return EXIT_FAILURE;
     }
 
-    __android_log_print(ANDROID_LOG_INFO, APPNAME, "SDL_Success: %s\n", SDL_GetError());
+    Logger::info("SDL was loaded successfully\n");
 
     bool done = false;
     while (!done)
