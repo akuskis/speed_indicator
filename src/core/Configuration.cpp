@@ -5,8 +5,8 @@ namespace
 {
 uint32_t const DEFAULT_FRAME_RATE = 60;
 
-int const DEFAULT_SCREEN_WIDTH = 640;
-int const DEFAULT_SCREEN_HEIGHT = 480;
+int const DEFAULT_SCREEN_WIDTH = 1000;
+int const DEFAULT_SCREEN_HEIGHT = 1000;
 } // namespace
 
 

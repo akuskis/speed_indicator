@@ -13,6 +13,10 @@ set(SOURCES
         Configuration.cpp
         engine/Engine.cpp
         engine/Fps.cpp
+        gui/GraphicsObject.cpp
+        misc/Point.cpp
+        misc/Size.cpp
+        widget/Widget.cpp
         )
 
 include_directories(.)

@@ -3,6 +3,7 @@
 #include "Configuration.hpp"
 #include "Fps.hpp"
 #include "misc/ObjectRaii.hpp"
+#include "widget/Widget.hpp"
 
 #include <string>
 
@@ -23,11 +24,14 @@ struct Engine::Impl
     std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)> renderer;
     bool running = false;
 
+    Widget wgt_;
+
     explicit Impl(Configuration& cfg)
         : cfg(cfg)
         , sdl{SDL_Init, SDL_Quit, "Can't initialize SDL (SDL_Init)", SDL_INIT_EVERYTHING}
         , window{nullptr, SDL_DestroyWindow}
         , renderer{nullptr, SDL_DestroyRenderer}
+        , wgt_({}, {cfg.getScreenWidth(), cfg.getScreenHeight()})
     {
     }
 };
@@ -71,9 +75,14 @@ void Engine::stop()
 
 void Engine::render()
 {
-    SDL_SetRenderDrawColor(impl->renderer.get(), 0xAA, 0x00, 0xA0, 0xFF);
-    SDL_RenderClear(impl->renderer.get());
-    SDL_RenderPresent(impl->renderer.get());
+    SDL_Renderer* renderer = impl->renderer.get();
+
+    SDL_SetRenderDrawColor(impl->renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
+    SDL_RenderClear(renderer);
+
+    impl->wgt_.render(renderer);
+
+    SDL_RenderPresent(renderer);
 }
 
 } // namespace s_indicator
