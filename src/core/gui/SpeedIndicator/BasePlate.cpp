@@ -2,14 +2,20 @@
 
 #include "misc/ExtraPrimitives.hpp"
 #include "misc/math.hpp"
+#include "theme/theme.hpp"
 
 #include "SDL2_gfxPrimitives.h"
+
+#include <string>
 
 
 namespace
 {
 uint32_t const BACKGROUND_COLOR = 0xffe3e3e3;
 uint32_t const LINE_COLOR = 0xffe8ba00;
+
+int const LABEL_SIZE = 50;
+SDL_Color const LABEL_COLOR{200, 0, 200, 255};
 
 int const MAJOR_SPEED_TICK = 20;
 int const MINOR_SPEED_TICK = 10;
@@ -50,6 +56,8 @@ void BasePlate::render(SDL_Renderer* renderer)
     filledCircleColor(renderer, x, y, radius * 0.95, BACKGROUND_COLOR);
     gfx::thickArcColor(renderer, x, y, circle_radius, start_angle_, end_angle_, LINE_COLOR, 3);
 
+    updateLabelTextures(renderer);
+
     for (int speed = 0; speed <= max_speed_; speed += MINOR_SPEED_TICK)
     {
         auto const angle_delta = start_angle_ + angles_per_unit * static_cast<double>(speed);
@@ -62,6 +70,12 @@ void BasePlate::render(SDL_Renderer* renderer)
             auto const y_2 = sin(math::toRad(angle_delta)) * major_tick_radius;
 
             thickLineColor(renderer, x + x_1, y + y_1, x + x_2, y + y_2, 6, LINE_COLOR);
+
+            // draw label
+            auto const* texture = numeric_labels_.at(speed).get();
+            SDL_Rect label_rect{
+                static_cast<int>(x + x_1), static_cast<int>(y + y_1), texture->rect().w, texture->rect().h};
+            SDL_RenderCopy(renderer, texture->texture(), nullptr, &label_rect);
         }
         else
         {
@@ -73,6 +87,22 @@ void BasePlate::render(SDL_Renderer* renderer)
     }
 
     GraphicsObject::render(renderer);
+}
+
+void BasePlate::updateLabelTextures(SDL_Renderer* renderer)
+{
+    if (numeric_labels_.empty())
+    {
+        for (int speed = 0; speed <= max_speed_; speed += MAJOR_SPEED_TICK)
+        {
+            auto texture = std::make_unique<Texture>();
+
+            theme::getTextTexture(
+                renderer, texture.get(), 0, 0, std::to_string(speed), Font::Type::roboto_bold, LABEL_SIZE, LABEL_COLOR);
+
+            numeric_labels_.insert({speed, std::move(texture)});
+        }
+    }
 }
 
 } // namespace s_indicator

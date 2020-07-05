@@ -1,6 +1,9 @@
 #pragma once
 
 #include "gui/GraphicsObject.hpp"
+#include "misc/Texture.hpp"
+
+#include <unordered_map>
 
 
 namespace s_indicator
@@ -14,5 +17,8 @@ public:
 
 private:
     int const start_angle_, end_angle_, max_speed_;
+    std::unordered_map<int, std::unique_ptr<Texture>> numeric_labels_;
+
+    void updateLabelTextures(SDL_Renderer* renderer);
 };
 } // namespace s_indicator

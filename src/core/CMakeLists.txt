@@ -20,7 +20,11 @@ set(SOURCES
         misc/ExtraPrimitives.cpp
         misc/Point.cpp
         misc/Size.cpp
+        misc/Texture.cpp
         misc/math.cpp
+        theme/Font.cpp
+        theme/theme.cpp
+        resources/fonts/fonts.cpp
         widget/Widget.cpp
         )
 
@@ -33,4 +37,4 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 find_library(log-lib log)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ${log-lib} SDL2 SDL2_gfx hidapi GLESv3 android)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${log-lib} SDL2 SDL2_gfx SDL2_ttf hidapi GLESv3 android)
