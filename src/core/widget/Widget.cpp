@@ -1,12 +1,26 @@
 #include "Widget.hpp"
 
+#include "gui/SpeedIndicator/SpeedIndicator.hpp"
+
 
 namespace s_indicator
 {
+struct Widget::Impl
+{
+    SpeedIndicator* speed_indicator = nullptr;
+};
+
 Widget::Widget(Point const& pos, Size const& size)
     : GraphicsObject(pos, size)
+    , impl(std::make_unique<Impl>())
 {
+    impl->speed_indicator = new SpeedIndicator();
+    impl->speed_indicator->setSize({800, 800});
+
+    addChild(impl->speed_indicator);
 }
+
+Widget::~Widget() = default;
 
 void Widget::render(SDL_Renderer* renderer)
 {

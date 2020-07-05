@@ -23,10 +23,10 @@ public:
     void clear();
 
     [[nodiscard]] Point const& getPos() const;
-    void setPos(Point const& value);
+    virtual void setPos(Point const& value);
 
     [[nodiscard]] Size getSize() const;
-    void setSize(Size const& value);
+    virtual void setSize(Size const& value);
 
 private:
     Point pos_;

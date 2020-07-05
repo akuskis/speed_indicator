@@ -5,17 +5,16 @@
 
 namespace s_indicator
 {
-class Widget : public GraphicsObject
+class SpeedIndicator : public GraphicsObject
 {
 public:
-    Widget(Point const& pos = {}, Size const& size = {});
-    virtual ~Widget();
+    SpeedIndicator();
+    virtual ~SpeedIndicator();
 
-    void render(SDL_Renderer* renderer) override;
+    void setSize(Size const& value) override;
 
 private:
     struct Impl;
     std::unique_ptr<Impl> impl;
 };
-
 } // namespace s_indicator
