@@ -14,11 +14,13 @@ set(SOURCES
         engine/Engine.cpp
         engine/Fps.cpp
         gui/GraphicsObject.cpp
-        gui/SpeedIndicator/SpeedIndicator.cpp
+        gui/SpeedIndicator/Arrow.cpp
         gui/SpeedIndicator/BasePlate.cpp
+        gui/SpeedIndicator/SpeedIndicator.cpp
         misc/ExtraPrimitives.cpp
         misc/Point.cpp
         misc/Size.cpp
+        misc/math.cpp
         widget/Widget.cpp
         )
 
