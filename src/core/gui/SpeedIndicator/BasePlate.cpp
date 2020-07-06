@@ -14,7 +14,8 @@ namespace
 uint32_t const BACKGROUND_COLOR = 0xffe3e3e3;
 uint32_t const LINE_COLOR = 0xffe8ba00;
 
-int const LABEL_SIZE = 50;
+int const LABEL_OFFSET = 15;
+int const LABEL_SIZE = 40;
 SDL_Color const LABEL_COLOR{200, 0, 200, 255};
 
 int const MAJOR_SPEED_TICK = 20;
@@ -73,8 +74,15 @@ void BasePlate::render(SDL_Renderer* renderer)
 
             // draw label
             auto const* texture = numeric_labels_.at(speed).get();
-            SDL_Rect label_rect{
-                static_cast<int>(x + x_1), static_cast<int>(y + y_1), texture->rect().w, texture->rect().h};
+            auto const half_of_w = texture->rect().w / 2.;
+            auto const half_of_h = texture->rect().h / 2.;
+            auto const label_x = cos(math::toRad(angle_delta)) * (circle_radius + LABEL_OFFSET + half_of_w);
+            auto const label_y = sin(math::toRad(angle_delta)) * (circle_radius + LABEL_OFFSET + half_of_h);
+
+            SDL_Rect label_rect{static_cast<int>(x + label_x - half_of_w),
+                                static_cast<int>(y + label_y - half_of_h),
+                                texture->rect().w,
+                                texture->rect().h};
             SDL_RenderCopy(renderer, texture->texture(), nullptr, &label_rect);
         }
         else
