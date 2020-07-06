@@ -15,7 +15,7 @@ Widget::Widget(Point const& pos, Size const& size)
     , impl(std::make_unique<Impl>())
 {
     impl->speed_indicator = new SpeedIndicator();
-    impl->speed_indicator->setSize({800, 800});
+    impl->speed_indicator->setSize(getSize());
 
     addChild(impl->speed_indicator);
 }
