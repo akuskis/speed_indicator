@@ -12,6 +12,7 @@ public:
     virtual ~SpeedIndicator();
 
     void setSize(Size const& value) override;
+    void setSpeed(double speed);
 
 private:
     struct Impl;

@@ -66,6 +66,7 @@ void Engine::runLoop()
 
     while (impl->running)
     {
+        update();
         render();
         fps.next();
     }
@@ -74,6 +75,11 @@ void Engine::runLoop()
 void Engine::stop()
 {
     impl->running = false;
+}
+
+void Engine::update()
+{
+    impl->wgt->update();
 }
 
 void Engine::render()

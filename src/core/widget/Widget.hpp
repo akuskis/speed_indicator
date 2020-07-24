@@ -11,6 +11,7 @@ public:
     Widget(Point const& pos = {}, Size const& size = {});
     virtual ~Widget();
 
+    void update() override;
     void render(SDL_Renderer* renderer) override;
 
 private:

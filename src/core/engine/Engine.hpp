@@ -22,6 +22,7 @@ private:
     struct Impl;
     std::unique_ptr<Impl> impl;
 
+    void update();
     void render();
 };
 

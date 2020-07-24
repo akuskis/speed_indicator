@@ -42,4 +42,9 @@ void SpeedIndicator::setSize(Size const& value)
     GraphicsObject::setSize(value);
 }
 
+void SpeedIndicator::setSpeed(double speed)
+{
+    impl->arrow->setAngle(START_ANGLE + (speed * (END_ANGLE - START_ANGLE)) / MAX_SPEED);
+}
+
 } // namespace s_indicator

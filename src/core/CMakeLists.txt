@@ -22,6 +22,8 @@ set(SOURCES
         misc/Size.cpp
         misc/Texture.cpp
         misc/math.cpp
+        service/SpeedService.cpp
+        service/JNI.cpp
         theme/Font.cpp
         theme/theme.cpp
         resources/fonts/fonts.cpp

@@ -17,6 +17,7 @@ public:
     explicit GraphicsObject(Point const& pos = {}, Size const& size = {});
     virtual ~GraphicsObject();
 
+    virtual void update();
     virtual void render(SDL_Renderer* renderer);
 
     GraphicsObject* addChild(GraphicsObject* child);

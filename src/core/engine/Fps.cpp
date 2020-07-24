@@ -17,8 +17,9 @@ void Fps::next()
 {
     auto const now = SDL_GetTicks();
 
-    if (now > next_time_)
+    if (now > next_time_) {
         next_time_ = now;
+    }
 
     SDL_Delay(next_time_ - now);
     next_time_ += ticks_per_frame_;

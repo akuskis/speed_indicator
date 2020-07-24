@@ -14,6 +14,10 @@ GraphicsObject::~GraphicsObject()
     clear();
 }
 
+void GraphicsObject::update()
+{
+}
+
 void GraphicsObject::render(SDL_Renderer* renderer)
 {
     for (auto* child : children_)

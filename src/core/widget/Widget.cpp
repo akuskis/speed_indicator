@@ -1,7 +1,7 @@
 #include "Widget.hpp"
 
 #include "gui/SpeedIndicator/SpeedIndicator.hpp"
-
+#include "service/SpeedService.hpp"
 
 namespace s_indicator
 {
@@ -21,6 +21,11 @@ Widget::Widget(Point const& pos, Size const& size)
 }
 
 Widget::~Widget() = default;
+
+void Widget::update()
+{
+    impl->speed_indicator->setSpeed(SpeedService::instance().getCurrentSpeed());
+}
 
 void Widget::render(SDL_Renderer* renderer)
 {
