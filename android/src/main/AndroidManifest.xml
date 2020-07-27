@@ -9,8 +9,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".XActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".XActivity"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,8 +22,8 @@
                 android:name=".DataService"
                 android:enabled="true"
                 android:exported="true">
+<!--                android:process=":externalProcess.dataService"-->
             <intent-filter>
-                <action android:name="com.example.speed_indicator.AIDL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>

@@ -6,11 +6,12 @@ import org.libsdl.app.SDLActivity;
 
 
 public class XActivity extends SDLActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DataServiceWorker.getInstance().setup(this);
-
         super.onCreate(savedInstanceState);
+
+        State.getInstance().setup(this);
     }
 
     @Override
