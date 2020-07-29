@@ -1,6 +1,6 @@
 #include "JNI.hpp"
 
-#include "SpeedService.hpp"
+#include "service/SpeedService.hpp"
 
 #include <jni.h>
 

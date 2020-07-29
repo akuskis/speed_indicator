@@ -1,0 +1,1 @@
+project(data_generator_tests)

@@ -3,6 +3,7 @@
 #include "gui/SpeedIndicator/SpeedIndicator.hpp"
 #include "service/SpeedService.hpp"
 
+
 namespace s_indicator
 {
 struct Widget::Impl

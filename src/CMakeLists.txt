@@ -1,2 +1,2 @@
-add_subdirectory(core)
-add_subdirectory(tests)
+add_subdirectory(data_generator)
+add_subdirectory(speed_indicator)
