@@ -1,4 +1,4 @@
-package com.example.speed_indicator;
+package com.example.speed_indicator.service;
 
 import android.app.Service;
 import android.content.Intent;

@@ -7,7 +7,7 @@ JService::JService(JNIEnv* env, jobject& obj)
     : env_(env)
     , obj_(obj)
 {
-    jclass jniClass = env_->FindClass("com/example/speed_indicator/DataServiceThread");
+    jclass jniClass = env_->FindClass("com/example/speed_indicator/service/DataServiceThread");
 
     submitCurrentSpeedMethod_ = env_->GetMethodID(jniClass, "submitCurrentSpeed", "(D)V");
     isInterrupredMethod_ = env_->GetMethodID(jniClass, "isInterrupted", "()Z");
