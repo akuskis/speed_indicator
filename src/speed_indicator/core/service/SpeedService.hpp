@@ -15,5 +15,10 @@ namespace s_indicator
         SpeedService() = default;
 
         JavaVM* vm_ = nullptr;
+        JNIEnv* env_ = nullptr;
+        jclass jniStateClass_;
+        jmethodID getCurrentSpeedMethod_;
+
+        void initialize();
     };
 } // namespace s_indicator

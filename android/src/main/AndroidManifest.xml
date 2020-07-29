@@ -21,8 +21,8 @@
         <service
                 android:name=".DataService"
                 android:enabled="true"
-                android:exported="true">
-<!--                android:process=":externalProcess.dataService"-->
+                android:exported="true"
+                android:process=":externalProcess.dataService">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

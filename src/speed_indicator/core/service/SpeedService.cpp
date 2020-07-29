@@ -18,14 +18,17 @@ void SpeedService::setJvm(JavaVM* vm)
 
 int SpeedService::getCurrentSpeed()
 {
-    JNIEnv* env;
-    vm_->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION);
+    if (!env_)
+        initialize();
 
-    jclass jniTestClass = env->FindClass("com/example/speed_indicator/State");
+    return (int)env_->CallStaticDoubleMethod(jniStateClass_, getCurrentSpeedMethod_);
+}
 
-    jmethodID getCurrentSpeedMethod = env->GetStaticMethodID(jniTestClass, "getCurrentSpeed", "()D");
-
-    return (int)env->CallStaticDoubleMethod(jniTestClass, getCurrentSpeedMethod);
+void SpeedService::initialize()
+{
+    vm_->GetEnv(reinterpret_cast<void**>(&env_), JNI_VERSION);
+    jniStateClass_ = env_->FindClass("com/example/speed_indicator/State");
+    getCurrentSpeedMethod_ = env_->GetStaticMethodID(jniStateClass_, "getCurrentSpeed", "()D");
 }
 
 } // namespace s_indicator
