@@ -21,6 +21,8 @@ void Fps::next()
         next_time_ = now;
     }
 
+    // NOTE: take into account precision of this Delay
+    // If you want some better FPS, remove SDL_Delay or use better clock
     SDL_Delay(next_time_ - now);
     next_time_ += ticks_per_frame_;
 }
