@@ -11,6 +11,7 @@ public class State {
 
     private double speed = -1;
     private static State instance;
+    private static final Object speedKey = new Object();
 
     public static synchronized State getInstance() {
         if (instance == null) {
@@ -21,11 +22,15 @@ public class State {
     }
 
     public static double getCurrentSpeed() {
-        return getInstance().speed;
+        synchronized (speedKey) {
+            return getInstance().speed;
+        }
     }
 
     public static void setCurrentSpeed(double value) {
-        getInstance().speed = value;
+        synchronized (speedKey) {
+            getInstance().speed = value;
+        }
     }
 
     public void setup(Activity activity) {
